@@ -16,6 +16,11 @@
 % See also matlab_colony_analyzer_tutorial, full_analysis_workflow_tutorial
 
 % (c) Gordon Bean, August 2013
+% ------------------------------------------------------------------------
+% Edited by Saurin Parikh, October 2016
+% Changed matlabpool to parpool
+
+%%
 
 function analyze_directory_of_images( imagedir, varargin )
     params = default_param( varargin, ...
