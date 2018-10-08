@@ -9,7 +9,7 @@
 % verbose <false>
 %  - if true, the filename is printed as the file is processed
 % parallel <false>
-%  - if true, uses matlabpool to process directory on multiple cores
+%  - if true, uses parpool to process directory on multiple cores
 %
 % All parameters are passed to analyze_image.
 %
@@ -42,8 +42,8 @@ function analyze_directory_of_images( imagedir, varargin )
     
     %% Scan each file
     if (params.parallel)
-        if (matlabpool('size') == 0)
-            matlabpool
+        if isempty(gcp('nocreate')); %checks if parpool is currently active
+            parpool
         end
         verb = params.verbose;
         parfor ff = 1 : length(files)
